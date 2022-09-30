@@ -1,7 +1,6 @@
 const fs = require('fs');
-const { networkInterfaces } = require('os');
 const util = require('util');
-const uuidv1 = require('uuid/v1');
+const uuid = require('uuid');
 
 const readAFile = util.promisify(fs.readFile);
 const writeAFile = util.promisify(fs.writeFile);
@@ -12,31 +11,31 @@ class StoreNotes {
     }
 
     write(note) {
-        return writeAFile('db/db.json', JSON.stringify(note))
+        return writeAFile('db/db.json', JSON.stringify(note, null, 4))
     }
 
     // Getting the notes
     grabNotes(){
         return this.read().then((notes) => {
-            let parsedNotes = [];
+            let parsedNotes;
 
             try{
-                parsedNotes.push(JSON.parse(notes))
+                parsedNotes = [].concat(JSON.parse(notes));
             } catch(err) {
-                console.log('There was an error adding notes to the array')
+                parsedNotes = [];
             }
             return parsedNotes;
         })
     }
 
     // Adding the notes
-    addNotes() {
+    addNotes(notes) {
         const { title, text } = notes;
         if(!title || !text) {
             throw new Error('Title and/or Text cannot be blank! Please input info for a note!')
         }
 
-        const newNote = { title, text, id: uuidv1() };
+        const newNote = { title, text, id: uuid.v1() };
         return this.grabNotes().then((notes) => [...notes, newNote])
         .then((updatedNotes) => this.write(updatedNotes))
         .then(() => newNote)

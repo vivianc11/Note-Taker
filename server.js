@@ -12,10 +12,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 
+// Using api router first
+app.use('/api', apiRouter);
 // Using HTML router
 app.use("/", htmlRouter);
-// Using api router
-app.use('/', apiRouter);
+
 
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

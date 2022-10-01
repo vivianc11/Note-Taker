@@ -45,7 +45,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 - Importing/exporting functions from one file to another; making the application have modular code
 
 ## Deployed project
-https://vivianc11.github.io/Note-Taker/
+https://note-taking-cat.herokuapp.com/
 
 ![image of note taker](./public/assets/Screen%20Shot%202022-09-30%20at%204.03.12%20PM.png)
 

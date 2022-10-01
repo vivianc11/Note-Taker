@@ -1,9 +1,11 @@
+// Importing
 const express = require('express');
 const apiRouter = require('./routes/apiRoute');
 const htmlRouter = require('./routes/htmlRoute');
 
 const PORT = process.env.PORT || 3001;
 
+// Initializing app
 const app = express();
 
 

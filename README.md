@@ -44,6 +44,19 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 - Importing/exporting functions from one file to another; making the application have modular code
 
+## Installation
+
+```sh
+npm i express uuid
+```
+
+## Usage
+
+Open Integrated Terminal, then run command:
+```sh
+node server.js
+```
+
 ## Deployed project
 https://note-taking-cat.herokuapp.com/
 
